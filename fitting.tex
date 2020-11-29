@@ -1,0 +1,271 @@
+%------------------------------------------------------------
+\section{Fitting Operator}
+%----------------------------------------------------------------
+\begin{frame}{Basic idea}
+  \bigskip
+  \begin{itemize}
+  \item \structure{Idea} Extend \T{P}{} to normal logic programs
+    \medskip
+  \item \structure{Logical background}
+    The idea is to turn a program's completion\\ into an operator such that
+    \smallskip
+    \begin{itemize}
+    \item the head atom of a rule must be $\mathit{true}$\\
+      if the rule's body is $\mathit{true}$
+    \item an atom must be $\mathit{false}$\\
+      if the body of each rule having it as head is $\mathit{false}$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Definition}
+  \bigskip
+  \begin{itemize}
+  \item<1-> Let $P$ be a normal logic program
+  \item<2-> Define
+    \[
+    {\mathbf{\Phi}}_P\langle T,F \rangle
+    =
+    \langle
+    {\mathbf{T}}_P\langle T,F \rangle,
+    {\mathbf{F}}_P\langle T,F \rangle
+    \rangle
+    \]
+  \item<2-> []
+    where
+    \begin{align*}
+      {\mathbf{T}}_P\langle T,F \rangle
+      & =
+      \{  \head{r} \mid r \in P, \pbody{r} \subseteq T, \nbody{r} \subseteq F  \}
+      \\
+      {\mathbf{F}}_P\langle T,F \rangle
+      & =
+      \{  a \in \atom{P} \mid
+      \\ &  \qquad\qquad
+      \pbody{r} \cap F \neq \emptyset
+      \text{ or }
+      \nbody{r} \cap T \neq \emptyset
+      \\ &  \qquad\qquad\qquad
+      \text{for each } r \in P
+      \text{ such that }
+      \head{r} = a
+      \ \}
+    \end{align*}
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Example}
+  \begin{itemize}
+  \item<1-> []
+    \[
+    P
+    =
+    \left\{
+      \begin{array}{lll}
+        a \leftarrow                  \quad &
+        c \leftarrow a, \naf{d}       \quad &
+        e \leftarrow b, \naf{f}
+        \\
+        b \leftarrow \naf{a}          \quad &
+        d \leftarrow \naf{c}, \naf{e} \quad &
+        e \leftarrow e
+      \end{array}
+    \right\}
+    \]
+    \medskip
+  \item<2-> Let's iterate ${\mathbf{\Phi}}_{P}$ on $\langle \{a\}, \{d\}\rangle$:
+    \[
+    \begin{array}{rcl}
+    {\mathbf{\Phi}}_{P}\langle\{a\}  ,\{d\}    \rangle &=&\langle\{a, c\} ,\{b,f\}  \rangle
+    \\
+    {\mathbf{\Phi}}_{P}\langle\{a,c\},\{b,f\}  \rangle &=&\langle\{a\}    ,\{b,d,f\}\rangle
+    \\
+    {\mathbf{\Phi}}_{P}\langle\{a\}  ,\{b,d,f\}\rangle &=&\langle\{a,c\}  ,\{b,f\}  \rangle
+    \\
+    & \vdots &
+    \end{array}
+    \]
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Fitting semantics}
+  \bigskip
+  \begin{itemize}
+  \item<1-> Define the iterative variant of ${\mathbf{\Phi}}_P$ analogously to $\T{P}{}$:
+    \[
+    {\mathbf{\Phi}}_P^0\langle T, F \rangle = \langle T, F \rangle
+    \qquad\qquad
+    {\mathbf{\Phi}}_P^{i+1}\langle T, F \rangle =
+    {\mathbf{\Phi}}_P{\mathbf{\Phi}}_P^i\langle T, F \rangle
+    \]
+  \item<2-> Define the \alert{Fitting semantics} of a normal logic program $P$\\
+    as the partial interpretation:
+    \[
+    \textstyle{\bigsqcup_{i \geq 0}} {\mathbf{\Phi}}_P^i \langle \emptyset, \emptyset \rangle
+    \]
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Example}
+  \begin{itemize}
+  \item<1-> []
+    \[
+    P
+    =
+    \left\{
+      \begin{array}{lll}
+        a \leftarrow                  \quad &
+        c \leftarrow a, \naf{d}       \quad &
+        e \leftarrow b, \naf{f}
+        \\
+        b \leftarrow \naf{a}          \quad &
+        d \leftarrow \naf{c}, \naf{e} \quad &
+        e \leftarrow e
+      \end{array}
+    \right\}
+    \]
+
+  \item<2-> []
+    \[
+    \begin{array}{rclcl}
+      \mathbf{\Phi}^0\langle\emptyset,\emptyset\rangle&=&                                              & &\langle\emptyset,\emptyset\rangle
+      \\
+      \mathbf{\Phi}^1\langle\emptyset,\emptyset\rangle&=&\mathbf{\Phi}\langle\emptyset,\emptyset\rangle&=&\langle\{a\}    ,\{f\}    \rangle
+      \\
+      \mathbf{\Phi}^2\langle\emptyset,\emptyset\rangle&=&\mathbf{\Phi}\langle\{a\}    ,\{f\}    \rangle&=&\langle\{a\}    ,\{b,f\}  \rangle
+      \\
+      \mathbf{\Phi}^3\langle\emptyset,\emptyset\rangle&=&\mathbf{\Phi}\langle\{a\}    ,\{b,f\}  \rangle&=&\langle\{a\}    ,\{b,f\}  \rangle%
+      \\[10pt]
+      \bigsqcup_{i \geq 0}\mathbf{\Phi}^i\langle\emptyset,\emptyset\rangle&=&\langle \{a\}, \{b,f\} \rangle
+    \end{array}
+    \]
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Properties}
+  \bigskip
+  Let $P$ be a normal logic program
+  \medskip
+  \begin{itemize}
+  \item ${\mathbf{\Phi}}_P\langle \emptyset, \emptyset \rangle$ is monotonic
+
+    That is,
+    \(
+    {\mathbf{\Phi}}_P^i\langle \emptyset, \emptyset \rangle
+    \sqsubseteq
+    {\mathbf{\Phi}}_P^{i+1}\langle \emptyset, \emptyset \rangle
+    \)
+    \smallskip
+  \item The Fitting semantics of $P$ is
+    \begin{itemize}
+    \item not conflicting,
+    \item and generally not total
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------
+\begin{frame}{Fitting fixpoints}
+  \bigskip
+  Let $P$ be a normal logic program,\\ and
+  let $\langle T,F \rangle$ be a partial interpretation
+  \medskip
+  \begin{itemize}
+  \item<1-> Define
+    $\langle T,F \rangle$ as a \alert{Fitting fixpoint} of $P$
+    if
+    ${\mathbf{\Phi}}_P\langle T,F \rangle = \langle T,F \rangle$
+  \medskip
+  \item<2-> []
+    \begin{itemize}
+    \item The Fitting semantics is the $\sqsubseteq$-least Fitting fixpoint of $P$
+    \item Any other Fitting fixpoint extends the Fitting semantics
+    \item Total Fitting fixpoints correspond to supported models
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Example}
+  \bigskip
+  \begin{itemize}
+  \item<1-> []
+    \[
+    P
+    =
+    \left\{
+      \begin{array}{lll}
+        a \leftarrow                  \quad &
+        c \leftarrow a, \naf{d}       \quad &
+        e \leftarrow b, \naf{f}
+        \\
+        b \leftarrow \naf{a}          \quad &
+        d \leftarrow \naf{c}, \naf{e} \quad &
+        e \leftarrow e
+      \end{array}
+    \right\}
+    \]
+    \bigskip
+  \item<2-> $P$ has three total Fitting fixpoints\pause[3]:
+    \begin{enumerate}
+    \item<3-> $\langle \{a,c\}, \{b,d,e,f\} \rangle$
+    \item<3-> $\langle \{a,d\}, \{b,c,e,f\} \rangle$
+    \item<3-> $\langle \{a,c,e\}, \{b,d,f\} \rangle$
+    \end{enumerate}
+    \medskip
+  \item <4-> $P$ has three supported models, two of them are stable models
+  \end{itemize}
+
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Properties}
+
+  Let $P$ be a normal logic program,\\ and
+  let $\langle T,F \rangle$ be a partial interpretation
+
+  \begin{itemize}
+  \item<1-> Let ${\mathbf{\Phi}}_P\langle T,F \rangle=\langle T',F'\rangle$
+  \item<2-> If $X$ is a stable model of $P$ such that $T\subseteq X$ and $X\cap F=\emptyset$,
+    \par then $T'\subseteq X$ and $X\cap F'=\emptyset$
+  \item<3-> [] That is, ${\mathbf{\Phi}}_P$ is \alert{stable model preserving}
+  \item<3-> [] Hence, ${\mathbf{\Phi}}_P$ can be used for approximating stable models
+    and so for propagation in ASP-solvers
+    \medskip
+  \item <4-> However, ${\mathbf{\Phi}}_P$ is still insufficient, because total fixpoints
+    correspond to supported models, not necessarily stable models
+  \item<5-> [] \structure{Note} The problem is the same as with program completion
+  \item<6-> [] The missing piece is non-circularity of derivations~!
+  \end{itemize}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}{Example}
+  \bigskip
+  \begin{itemize}
+  \item<1-> []
+    \(
+    P
+    =
+    \left\{
+      \begin{array}{lcl}
+        a &\leftarrow & b \\
+        b &\leftarrow & a
+      \end{array}
+    \right\}
+    \)
+    \bigskip
+  \item<2-> []
+    \(
+    \begin{array}{lcl}
+      \Phi_P^0\langle \emptyset,\emptyset\rangle &=&\langle \emptyset,\emptyset\rangle\\
+      \Phi_P^1\langle \emptyset,\emptyset\rangle &=&\langle \emptyset,\emptyset\rangle
+    \end{array}
+    \)
+    \bigskip
+  \item<3-> That is, Fitting semantics cannot assign $\mathit{false}$ to $a$ and $b$,
+
+    although they can never become $\mathit{true}$~!
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../asp"
+%%% End:

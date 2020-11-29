@@ -1,0 +1,35 @@
+%------------------------------------------------------------
+\section{Partial Interpretations}
+%------------------------------------------------------------
+\begin{frame}{Interlude: Partial interpretations\\\normalsize
+    or: 3-valued interpretations}
+  
+  A \alert{partial interpretation} maps atoms onto truth values 
+  \alert{$\mathit{true}$}, \alert{$\mathit{false}$},\\ and \alert{$\mathit{unknown}$}
+  \begin{itemize}
+  \item<2-> \structure{Representation} $\langle T,F \rangle$, where
+    \begin{itemize}
+    \item $T$ is the set of all $\mathit{true}$ atoms and
+    \item $F$ is the set of all $\mathit{false}$ atoms
+    \item Truth of atoms in $\mathcal{A} \setminus (T \cup F)$ is $\mathit{unknown}$
+    \end{itemize}
+  \item<3-> \structure{Properties}
+    \begin{itemize}
+    \item $\langle T,F \rangle$ is \alert{conflicting} if $T \cap F\neq\emptyset$
+    \item $\langle T,F \rangle$ is \alert{total} if $T \cup F = \mathcal{A}$ and $T \cap F=\emptyset$
+    \end{itemize}
+  \item<4-> \structure{Definition}
+    For $\langle T_1,F_1\rangle$ and $\langle T_2,F_2\rangle$, define
+    \begin{itemize}
+    \item $\langle T_1,F_1\rangle \sqsubseteq \langle T_2,F_2\rangle$
+      iff
+      $T_1\subseteq T_2$ and $F_1\subseteq F_2$
+    \item $\langle T_1,F_1\rangle \sqcup \langle T_2,F_2\rangle =
+      \langle T_1 \cup T_2, F_1 \cup F_2 \rangle$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../asp"
+%%% End: 
