@@ -1,23 +1,37 @@
 % ----------------------------------------------------------------------
-\begin{frame}{Partial interpretation}{Or: three-valued interpretation}
+\begin{frame}{Partial interpretation}{Three-valued interpretation}
 
   A \alert{partial interpretation} maps atoms onto truth values
-  \alert{$\mathit{true}$}, \alert{$\mathit{false}$},\\ and \alert{$\mathit{unknown}$}
+  \par
+  \alert{$\mathit{true}$}, \alert{$\mathit{false}$}, and \alert{$\mathit{unknown}$}
+  \smallskip
   \begin{itemize}
-  \item<2-> \structure{Representation} $\langle T,F \rangle$, where
-    \begin{itemize}
-    \item $T$ is the set of all $\mathit{true}$ atoms and
-    \item $F$ is the set of all $\mathit{false}$ atoms
-    \item Truth of atoms in $\mathcal{A} \setminus (T \cup F)$ is $\mathit{unknown}$
+  \item<2-> \structure{Representation} \ $\langle T,F \rangle$, where
+    \begin{itemize}\normalsize
+    \item $T$ is the set of $\mathit{true}$  atoms and
+    \item $F$ is the set of $\mathit{false}$ atoms
+    \item Atoms in $\mathcal{A} \setminus (T \cup F)$ are $\mathit{unknown}$
     \end{itemize}
-  \item<3-> \structure{Properties}
-    \begin{itemize}
+    \smallskip
+  \item<only@3>  \structure{Alternative} \
+    \begin{itemize}\normalsize
+    \item $(L,U)$ with $L\subseteq U$
+      \begin{itemize}\small
+      \item $L$ is the set of $\mathit{true}$  atoms and
+      \item $U$ is the set of $\mathit{possible}$ atoms
+      \item Atoms in $\mathcal{A} \setminus U$ are $\mathit{false}$
+      \end{itemize}
+    \item $(L,U)\sim \langle L,\mathcal{A}\setminus U\rangle$
+    \end{itemize}
+  \item<only@4-> \structure{Properties}
+    \begin{itemize}\normalsize
     \item $\langle T,F \rangle$ is \alert{conflicting} if $T \cap F\neq\emptyset$
     \item $\langle T,F \rangle$ is \alert{total} if $T \cup F = \mathcal{A}$ and $T \cap F=\emptyset$
     \end{itemize}
-  \item<4-> \structure{Definition}
+    \smallskip
+  \item<only@5-> \structure{Operations} \
     For $\langle T_1,F_1\rangle$ and $\langle T_2,F_2\rangle$, define
-    \begin{itemize}
+    \begin{itemize}\normalsize
     \item $\langle T_1,F_1\rangle \sqsubseteq \langle T_2,F_2\rangle$
       iff
       $T_1\subseteq T_2$ and $F_1\subseteq F_2$
