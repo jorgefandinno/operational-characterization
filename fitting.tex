@@ -1,5 +1,3 @@
-%------------------------------------------------------------
-\section{Fitting Operator}
 %----------------------------------------------------------------
 \begin{frame}{Basic idea}
   \bigskip
@@ -63,11 +61,11 @@
     \left\{
       \begin{array}{lll}
         a \leftarrow                  \quad &
-        c \leftarrow a, \naf{d}       \quad &
-        e \leftarrow b, \naf{f}
+        c \leftarrow a, \neg d       \quad &
+        e \leftarrow b, \neg f
         \\
-        b \leftarrow \naf{a}          \quad &
-        d \leftarrow \naf{c}, \naf{e} \quad &
+        b \leftarrow \neg a          \quad &
+        d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
     \right\}
@@ -115,11 +113,11 @@
     \left\{
       \begin{array}{lll}
         a \leftarrow                  \quad &
-        c \leftarrow a, \naf{d}       \quad &
-        e \leftarrow b, \naf{f}
+        c \leftarrow a, \neg d       \quad &
+        e \leftarrow b, \neg f
         \\
-        b \leftarrow \naf{a}          \quad &
-        d \leftarrow \naf{c}, \naf{e} \quad &
+        b \leftarrow \neg a          \quad &
+        d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
     \right\}
@@ -194,11 +192,11 @@
     \left\{
       \begin{array}{lll}
         a \leftarrow                  \quad &
-        c \leftarrow a, \naf{d}       \quad &
-        e \leftarrow b, \naf{f}
+        c \leftarrow a, \neg d       \quad &
+        e \leftarrow b, \neg f
         \\
-        b \leftarrow \naf{a}          \quad &
-        d \leftarrow \naf{c}, \naf{e} \quad &
+        b \leftarrow \neg a          \quad &
+        d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
     \right\}
@@ -265,7 +263,8 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
+%
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../asp"
+%%% TeX-master: "../../main"
 %%% End:
