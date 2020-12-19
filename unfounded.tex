@@ -57,7 +57,7 @@ Let $P$ be a normal logic program,\\ and let
 $\langle T,F \rangle$ be a partial interpretation
 
 \begin{itemize}
-\item<2-> \structure{Observation} The union of two unfounded sets is an unfounded set
+\item<2-> \structure{Observation} \ The union of two unfounded sets is an unfounded set
 \item<3-> The \alert{greatest unfounded set} of $P$ wrt $\langle T,F \rangle$ is the
   union of all unfounded sets of $P$ wrt $\langle T,F \rangle$
 \item<4-> [] It is denoted by $\mathbf{U}_P\langle T,F \rangle$
@@ -67,7 +67,7 @@ $\langle T,F \rangle$ be a partial interpretation
   \atom{P} \setminus
   \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\/
   \]
-\item<6-> \structure{Note}
+\item<6-> \structure{Note} \
   \(
   \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}
   \)
@@ -81,11 +81,11 @@ $\langle T,F \rangle$ be a partial interpretation
   and let $\langle T,F \rangle$ be a partial interpretation
 
   \begin{itemize}
-  \item<1-> \structure{Observation}
+  \item<1-> \structure{Observation} \
     Condition 1 (in the definition of an unfounded set)
     corresponds to  ${\mathbf{F}}_P\langle T,F \rangle$
     of Fitting's ${\mathbf{\Phi}}_P\langle T,F \rangle$
-  \item<2-> \structure{Idea}
+  \item<2-> \structure{Idea} \
     Extend (negative part of) Fitting's operator $\mathbf{\Phi}_P$
 
   \item<3-> [] That is,
@@ -96,14 +96,14 @@ $\langle T,F \rangle$ be a partial interpretation
     \end{itemize}
   \item<4-> In words, an atom must be $\mathit{false}$\\ if it belongs to the greatest unfounded set
     \bigskip
-  \item<5-> \structure{Definition}
+  \item<5-> \structure{Definition} \
     \(
     {\mathbf{\Omega}}_P\langle T,F \rangle
     =
     \langle {\mathbf{T}}_P\langle T,F \rangle, {\mathbf{U}}_P\langle T,F \rangle\rangle
     \)
     \pause
-  \item<5-> \structure{Property}
+  \item<5-> \structure{Property} \
     \(
     {\mathbf{\Phi}}_P\langle T,F \rangle \sqsubseteq
     {\mathbf{\Omega}}_P\langle T,F \rangle
@@ -299,7 +299,7 @@ $\langle T,F \rangle$ be a partial interpretation
     operator ${\mathbf{\Omega}}_P$ is sufficient for propagation
     because total fixpoints correspond to stable models
     \medskip
-  \item<5-> \structure{Note}
+  \item<5-> \structure{Note} \
     In addition to ${\mathbf{\Omega}}_P$, most ASP-solvers apply backward
     propagation, originating from program completion
     \\
