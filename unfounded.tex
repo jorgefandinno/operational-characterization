@@ -80,28 +80,37 @@ P
 
 \end{frame}
 % ----------------------------------------------------------------
-\begin{frame}{Greatest unfounded sets}\label{unf:greatest}
-
-Let $P$ be a normal logic program,\\ and let
-$\langle T,F \rangle$ be a partial interpretation
-
-\begin{itemize}
-\item<2-> \structure{Observation} \ The union of two unfounded sets is an unfounded set
-\item<3-> The \alert{greatest unfounded set} of $P$ wrt $\langle T,F \rangle$ is the
-  union of all unfounded sets of $P$ wrt $\langle T,F \rangle$
-\item<4-> [] It is denoted by $\mathbf{U}_P\langle T,F \rangle$
-\item<5-> Alternatively, we may define
-  \[
-  \mathbf{U}_P\langle T,F \rangle =
-  \atom{P} \setminus
-  \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\/
-  \]
-\item<6-> \structure{Note} \
-  \(
-  \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}
-  \)
-  contains all non-circularly derivable atoms from $P$ wrt $\langle T,F \rangle$
-\end{itemize}
+\begin{frame}{Greatest unfounded sets}{\phantom{Alternative definition}}\label{unf:greatest}
+  Let $P$ be a normal logic program,\\ and let
+  $\langle T,F \rangle$ be a partial interpretation
+  \medskip
+  \begin{itemize}
+  \item<2-> \structure{Observation} \ The union of two unfounded sets is an unfounded set
+    \medskip
+  \item<3-> \structure{Definition}  \ The \alert{greatest unfounded set} of $P$ wrt $\langle T,F \rangle$ is
+    \\ the union of all unfounded sets of $P$ wrt $\langle T,F \rangle$
+  \item<4-> [] and denoted by $\mathbf{U}_P\langle T,F \rangle$
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------
+\begin{frame}{Greatest unfounded sets}{Alternative definition}
+  Let $P$ be a normal logic program,\\ and let
+  $\langle T,F \rangle$ be a partial interpretation
+  \medskip
+  \begin{itemize}
+  \item<1-> Alternatively, define
+    \[
+      \mathbf{U}_P\langle T,F \rangle =
+      \atom{P} \setminus
+      \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\/
+    \]
+  \item<2-> \structure{Note} \ The set
+    \begin{eqnarray*}
+      & & \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\\
+      &=& \Cn{\{\head{r}\leftarrow\pbody{r} \mid r\in P, \pbody{r} \cap F = \emptyset, \nbody{r}\cap T=\emptyset\}}
+    \end{eqnarray*}
+    contains all non-circularly derivable atoms from $P$ wrt $\langle T,F \rangle$
+  \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 %
