@@ -2,12 +2,12 @@
 \begin{frame}{Basic idea}
   \bigskip
   \begin{itemize}
-  \item \structure{Idea} \ Extend \T{P}{} to normal logic programs
+  \item \structure{Idea} \ Extend consequence operator to normal logic programs
     \medskip
   \item \structure{Logical background} \
     The idea is to turn a program's completion\\ into an operator such that
     \smallskip
-    \begin{itemize}
+    \begin{itemize}\normalsize
     \item the head atom of a rule must be $\mathit{true}$\\
       if the rule's body is $\mathit{true}$
     \item an atom must be $\mathit{false}$\\
@@ -60,11 +60,11 @@
     =
     \left\{
       \begin{array}{lll}
-        a \leftarrow                  \quad &
-        c \leftarrow a, \neg d       \quad &
+        a \leftarrow                \quad &
+        c \leftarrow a, \neg d      \quad &
         e \leftarrow b, \neg f
         \\
-        b \leftarrow \neg a          \quad &
+        b \leftarrow \neg a         \quad &
         d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
