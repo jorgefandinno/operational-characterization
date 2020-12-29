@@ -3,25 +3,30 @@
 
   Let $P$ be a normal logic program,\\ and
   let $\langle T,F \rangle$ be a partial interpretation
-
+  \smallskip
   \begin{itemize}
   \item<2-> A set $U \subseteq \atom{P}$ is an \alert{unfounded set} of $P$
-    wrt $\langle T,F \rangle$\pause[4],
+    wrt $\langle T,F \rangle$
+  \item<4->[]
+  % if for each rule $r\in P$ such that $\head{r}\in U$ either
+    if for each rule $r\in P$ such that $\head{r}\in U$
 
-%    if we have for each rule $r\in P$ such that $\head{r}\in U$\pause[5] either
-    if for each rule $r\in P$ such that $\head{r}\in U$\pause[5], we have that
-
-    \begin{enumerate}
-      % \item $\head{r} \not\in U$,
-    \item<6-> $\pbody{r} \cap F \neq \emptyset$ or $\nbody{r} \cap T \neq \emptyset$\pause[8] or
-    \item<8-> $\pbody{r} \cap U \neq \emptyset$
+    \begin{enumerate}\normalsize
+  % \item $\head{r} \not\in U$,
+    \item<5-> $\pbody{r} \cap F \neq \emptyset$ or $\nbody{r} \cap T \neq \emptyset$\uncover<7->{ or}
+    \item<7-> $\pbody{r} \cap U \neq \emptyset$
     \end{enumerate}
-
-  \item<3> Intuitively, $\langle T,F \rangle$ is what we already know about $P$
-  \item<7> Rules satisfying Condition 1 are not usable for further derivations
-  \item<9-> Condition 2 is the unfounded set condition treating cyclic derivations:
-    \alert{All rules still being usable to derive an atom in $U$ require an(other) atom in $U$ to be true}
+    \medskip
+  \item<3-> \structure{Note} \
+    \begin{itemize}\normalsize
+    \item<3-> $\langle T,F \rangle$ is what we already know about $P$
+    \item<6-> Condition 1 identifies inapplicable rules
+    \item<8-> Condition 2 identifies cyclic derivations
+      \smallskip
+    \item<9->[] \structure{Unfounded set condition} \
+    \alert{All rules still being usable\\ to derive an atom in $U$ require an atom in $U$ to be true}
   \end{itemize}
+\end{itemize}
 \end{frame}
 %----------------------------------------------------------------
 \begin{frame}{Example}
