@@ -1,4 +1,4 @@
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Basic idea}
   \bigskip
   \begin{itemize}
@@ -15,11 +15,11 @@
     \end{itemize}
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Definition}
-  \bigskip
+  Let $P$ be a normal logic program
+  \medskip
   \begin{itemize}
-  \item<1-> Let $P$ be a normal logic program
   \item<2-> Define
     \[
     {\mathbf{\Phi}}_P\langle T,F \rangle
@@ -29,33 +29,35 @@
     {\mathbf{F}}_P\langle T,F \rangle
     \rangle
     \]
-  \item<2-> []
+  \item<3-> []
     where
     \begin{align*}
       {\mathbf{T}}_P\langle T,F \rangle
       & =
-      \{  \head{r} \mid r \in P, \pbody{r} \subseteq T, \nbody{r} \subseteq F  \}
-      \\
+      \{\, \head{r} \mid r \in P, \pbody{r} \subseteq T, \nbody{r} \subseteq F \,\}
+      \\\pause[4]
       {\mathbf{F}}_P\langle T,F \rangle
       & =
-      \{  a \in \atom{P} \mid
-      \\ &  \qquad\qquad
+      \{\, a \in \atom{P} \mid
       \pbody{r} \cap F \neq \emptyset
       \text{ or }
       \nbody{r} \cap T \neq \emptyset
-      \\ &  \qquad\qquad\qquad
-      \text{for each } r \in P
+      \\
+      & \kern 71pt
+      \text{ for each } r \in P
       \text{ such that }
       \head{r} = a
-      \ \}
+      \,\}
     \end{align*}
+  \item<5-> \structure{Note} \ We refer to ${\mathbf{\Phi}}_P$ as the \alert{Fitting operator} of program $P$
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Example}
+  \bigskip
   \begin{itemize}
-  \item<1-> []
-    \[
+  \item<1->
+    \(
     P
     =
     \left\{
@@ -69,9 +71,9 @@
         e \leftarrow e
       \end{array}
     \right\}
-    \]
-    \medskip
-  \item<2-> Let's iterate ${\mathbf{\Phi}}_{P}$ on $\langle \{a\}, \{d\}\rangle$:
+    \)
+    \bigskip
+  \item<2-> Let's iterate ${\mathbf{\Phi}}_{P}$ on $\langle \{a\}, \{d\}\rangle$
     \[
     \begin{array}{rcl}
     {\mathbf{\Phi}}_{P}\langle\{a\}  ,\{d\}    \rangle &=&\langle\{a, c\} ,\{b,f\}  \rangle
@@ -85,45 +87,46 @@
     \]
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Fitting semantics}
   \bigskip
   \begin{itemize}
-  \item<1-> Define the iterative variant of ${\mathbf{\Phi}}_P$ analogously to $\T{P}{}$:
+  \item<1-> Define the iterative variant of ${\mathbf{\Phi}}_P$ for $i\geq 0$ as
     \[
-    {\mathbf{\Phi}}_P^0\langle T, F \rangle = \langle T, F \rangle
-    \qquad\qquad
-    {\mathbf{\Phi}}_P^{i+1}\langle T, F \rangle =
-    {\mathbf{\Phi}}_P{\mathbf{\Phi}}_P^i\langle T, F \rangle
+      {\mathbf{\Phi}}_P^0\langle T, F \rangle = \langle T, F \rangle
+      \qquad\qquad
+      {\mathbf{\Phi}}_P^{i+1}\langle T, F \rangle =
+      {\mathbf{\Phi}}_P{\mathbf{\Phi}}_P^i\langle T, F \rangle
     \]
   \item<2-> Define the \alert{Fitting semantics} of a normal logic program $P$\\
-    as the partial interpretation:
+    as the partial interpretation
     \[
-    \textstyle{\bigsqcup_{i \geq 0}} {\mathbf{\Phi}}_P^i \langle \emptyset, \emptyset \rangle
+      \textstyle{\bigsqcup_{i \geq 0}} {\mathbf{\Phi}}_P^i \langle \emptyset, \emptyset \rangle
     \]
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Example}
+  \bigskip
   \begin{itemize}
-  \item<1-> []
-    \[
+  \item<1->
+    \(
     P
     =
     \left\{
       \begin{array}{lll}
-        a \leftarrow                  \quad &
-        c \leftarrow a, \neg d       \quad &
+        a \leftarrow                \quad &
+        c \leftarrow a, \neg d      \quad &
         e \leftarrow b, \neg f
         \\
-        b \leftarrow \neg a          \quad &
+        b \leftarrow \neg a         \quad &
         d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
     \right\}
-    \]
-
-  \item<2-> []
+    \)
+  \bigskip
+  \item<2-> Computing the Fitting semantics of $P$
     \[
     \begin{array}{rclcl}
       \mathbf{\Phi}^0\langle\emptyset,\emptyset\rangle&=&                                              & &\langle\emptyset,\emptyset\rangle
@@ -133,19 +136,20 @@
       \mathbf{\Phi}^2\langle\emptyset,\emptyset\rangle&=&\mathbf{\Phi}\langle\{a\}    ,\{f\}    \rangle&=&\langle\{a\}    ,\{b,f\}  \rangle
       \\
       \mathbf{\Phi}^3\langle\emptyset,\emptyset\rangle&=&\mathbf{\Phi}\langle\{a\}    ,\{b,f\}  \rangle&=&\langle\{a\}    ,\{b,f\}  \rangle%
-      \\[10pt]
+      \\[10pt]\pause[3]
       \bigsqcup_{i \geq 0}\mathbf{\Phi}^i\langle\emptyset,\emptyset\rangle&=&\langle \{a\}, \{b,f\} \rangle
     \end{array}
     \]
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Properties}
   \bigskip
   Let $P$ be a normal logic program
   \medskip
   \begin{itemize}
   \item ${\mathbf{\Phi}}_P\langle \emptyset, \emptyset \rangle$ is monotonic
+    \smallskip
 
     That is,
     \(
@@ -155,13 +159,13 @@
     \)
     \smallskip
   \item The Fitting semantics of $P$ is
-    \begin{itemize}
-    \item not conflicting,
-    \item and generally not total
+    \begin{itemize}\normalsize
+    \item not conflicting
+    \item generally not total
     \end{itemize}
   \end{itemize}
 \end{frame}
-% ----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Fitting fixpoints}
   \bigskip
   Let $P$ be a normal logic program,\\ and
@@ -172,72 +176,77 @@
     $\langle T,F \rangle$ as a \alert{Fitting fixpoint} of $P$
     if
     ${\mathbf{\Phi}}_P\langle T,F \rangle = \langle T,F \rangle$
-  \medskip
+  \smallskip
   \item<2-> []
-    \begin{itemize}
-    \item The Fitting semantics is the $\sqsubseteq$-least Fitting fixpoint of $P$
-    \item Any other Fitting fixpoint extends the Fitting semantics
-    \item Total Fitting fixpoints correspond to supported models
+    \begin{itemize}\normalsize
+    \item the Fitting semantics is the $\sqsubseteq$-least Fitting fixpoint of $P$
+    \item any other Fitting fixpoint extends the Fitting semantics
+    \item total Fitting fixpoints correspond to supported models
     \end{itemize}
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Example}
   \bigskip
   \begin{itemize}
-  \item<1-> []
-    \[
+  \item<1->
+    \(
     P
     =
     \left\{
       \begin{array}{lll}
-        a \leftarrow                  \quad &
-        c \leftarrow a, \neg d       \quad &
+        a \leftarrow                \quad &
+        c \leftarrow a, \neg d      \quad &
         e \leftarrow b, \neg f
         \\
-        b \leftarrow \neg a          \quad &
+        b \leftarrow \neg a         \quad &
         d \leftarrow \neg c, \neg e \quad &
         e \leftarrow e
       \end{array}
     \right\}
-    \]
+    \)
     \bigskip
-  \item<2-> $P$ has three total Fitting fixpoints\pause[3]:
-    \begin{enumerate}
+  \item<2-> $P$ has three total Fitting fixpoints\pause[3]
+    \smallskip
+    \begin{itemize}\normalsize
     \item<3-> $\langle \{a,c\}, \{b,d,e,f\} \rangle$
     \item<3-> $\langle \{a,d\}, \{b,c,e,f\} \rangle$
     \item<3-> $\langle \{a,c,e\}, \{b,d,f\} \rangle$
-    \end{enumerate}
+    \end{itemize}
     \medskip
   \item <4-> $P$ has three supported models, two of them are stable models
   \end{itemize}
-
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Properties}
 
-  Let $P$ be a normal logic program,\\ and
-  let $\langle T,F \rangle$ be a partial interpretation
-
+  Let ${\mathbf{\Phi}}_P\langle T,F \rangle=\langle T',F'\rangle$
+  for\\
+  a normal logic program $P$ and
+  a partial interpretation $\langle T,F \rangle$
+  \smallskip
   \begin{itemize}
-  \item<1-> Let ${\mathbf{\Phi}}_P\langle T,F \rangle=\langle T',F'\rangle$
-  \item<2-> If $X$ is a stable model of $P$ such that $T\subseteq X$ and $X\cap F=\emptyset$,
+  \item<2-> ${\mathbf{\Phi}}_P$ is \alert{stable model preserving}
+  \item<2-> [] If $X$ is a stable model of $P$ such that $T\subseteq X$ and $X\cap F=\emptyset$,
     \par then $T'\subseteq X$ and $X\cap F'=\emptyset$
-  \item<3-> [] That is, ${\mathbf{\Phi}}_P$ is \alert{stable model preserving}
-  \item<3-> [] Hence, ${\mathbf{\Phi}}_P$ can be used for approximating stable models
-    and so for propagation in ASP-solvers
+    \smallskip
+  \item<3-> \structure{Note} \ ${\mathbf{\Phi}}_P$ can be used for approximating stable models
+    \\
+    and so for propagation in ASP solvers
     \medskip
-  \item <4-> However, ${\mathbf{\Phi}}_P$ is still insufficient, because total fixpoints
-    correspond to supported models, not necessarily stable models
-  \item<5-> [] \structure{Note} \ The problem is the same as with program completion
-  \item<6-> [] The missing piece is non-circularity of derivations~!
+  \item <4->  \structure{Disclaimer} \ ${\mathbf{\Phi}}_P$ is still insufficient because total fixpoints
+    correspond to supported models not necessarily stable models
+    \begin{itemize}\normalsize
+    \item the problem is the same as with program completion
+    \item the missing piece is non-circularity of derivations
+    \end{itemize}
   \end{itemize}
 \end{frame}
-%----------------------------------------------------------------
+% ----------------------------------------------------------------------
 \begin{frame}{Example}
   \bigskip
   \begin{itemize}
-  \item<1-> []
+  \item<1->
     \(
     P
     =
@@ -249,17 +258,22 @@
     \right\}
     \)
     \bigskip
-  \item<2-> []
+  \item<2-> Computing the Fitting semantics of $P$
+    \\
+    \medskip
     \(
     \begin{array}{lcl}
       \Phi_P^0\langle \emptyset,\emptyset\rangle &=&\langle \emptyset,\emptyset\rangle\\
       \Phi_P^1\langle \emptyset,\emptyset\rangle &=&\langle \emptyset,\emptyset\rangle
+      \\[5pt]
+      \bigsqcup_{i \geq 0}\mathbf{\Phi}^i\langle\emptyset,\emptyset\rangle&=&\langle\emptyset,\emptyset\rangle
     \end{array}
     \)
     \bigskip
-  \item<3-> That is, Fitting semantics cannot assign $\mathit{false}$ to $a$ and $b$,
-
-    although they can never become $\mathit{true}$~!
+  \item<3-> \structure{Observation} \
+    Fitting semantics cannot assign $\mathit{false}$ to $a$ and $b$
+    \\
+    although they can never become $\mathit{true}$
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
