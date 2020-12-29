@@ -56,6 +56,25 @@ P
 \end{itemize}
 
 \end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Logic programs}
+  \bigskip
+  \begin{center}
+    \begin{minipage}[t]{0.92\linewidth}
+      \begin{block}{Sacc{\'a}-Zaniolo Theorem}
+        Let $P$ be a normal logic program and $X\subseteq\atom{P}$
+        \par\medskip
+        Then, $X$ is a stable model of~$P$ iff
+        \smallskip
+        \begin{enumerate}
+        \item $X\models P$ and
+        \item no nonempty subset of $X$ is unfounded for $P$ wrt $\langle X,\atom{P}\setminus X \rangle$
+        \end{enumerate}
+      \end{block}
+    \end{minipage}
+  \end{center}
+  \nocite{saczan90a}
+\end{frame}
 %----------------------------------------------------------------
 \begin{frame}{Unfounded sets an loops}
 
