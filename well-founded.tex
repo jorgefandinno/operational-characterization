@@ -240,10 +240,24 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Well-founded operator}{Alternative definition}
+\begin{frame}{Well-founded operator reloaded}{Alternative definition}
   Let $P$ be a normal logic program\\
-  and let $\langle T,F \rangle$ be a partial interpretation
-  \medskip
+  and let $(L,U)$ with $L\subseteq U$ be a partial interpretation
+  \bigskip
+  \begin{itemize}
+  \item <2-> Define
+    \[
+      {\mathbf{\Omega}}_P(L,U)
+      =
+      (\Cn{\reduct{P}{U}},\Cn{\reduct{P}{L}})
+    \]
+  \item <3-> \structure{Properties}
+    \begin{itemize}\normalsize
+    \item The least fixpoint  of ${\mathbf{\Omega}}_P$ corresponds to the well-founded semantics of $P$
+      \smallskip
+    \item Total fixpoints of ${\mathbf{\Omega}}_P$ correspond  to the stable models of $P$
+    \end{itemize}
+  \end{itemize}
   \nocite{truszczynski18a}
 \end{frame}
 % ----------------------------------------------------------------------

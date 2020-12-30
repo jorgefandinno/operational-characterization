@@ -280,6 +280,31 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{Fitting operator reloaded}{Alternative definition}
+  Let $P$ be a normal logic program\\
+  and let $(L,U)$ with $L\subseteq U$ be a partial interpretation
+  \medskip
+  \begin{itemize}
+  \item <2-> Define
+    \begin{align*}
+      {\mathbf{T}}_P(L,U)
+      & =
+      \{\, \head{r} \mid r \in P, \pbody{r} \subseteq U, \nbody{r} \cap U\neq \emptyset \,\}
+      \\
+      {\mathbf{\Phi}}_P(L,U)
+      & =
+      ({\mathbf{T}}_P(L,U),{\mathbf{T}}_P(U,L))
+    \end{align*}
+  \item <3-> \structure{Properties}
+    \begin{itemize}\normalsize
+    \item Least fixpoint  of ${\mathbf{\Phi}}_P$ corresponds to the Fitting semantics of $P$
+      \smallskip
+    \item Total fixpoints of ${\mathbf{\Phi}}_P$ correspond  to the supported models of $P$
+    \end{itemize}
+  \end{itemize}
+  \nocite{truszczynski18a}
+\end{frame}
+% ----------------------------------------------------------------------
 %
 %%% Local Variables:
 %%% mode: latex
