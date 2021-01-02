@@ -8,11 +8,31 @@
     Turn a program's completion into an operator such that
     \smallskip
     \begin{itemize}\normalsize
-    \item the head atom of a rule must be $\mathit{true}$\\
-      if the rule's body is $\mathit{true}$
+    \item an atom must be $\mathit{true}$
+      \par\smallskip
+      if it is the head atom of a rule whose body is $\mathit{true}$
       \smallskip
-    \item an atom must be $\mathit{false}$\\
-      if the body of each rule having it as head is $\mathit{false}$
+      \begin{itemize}\normalsize
+      \item<only@2->
+        \(
+        \phantom{\neg}a
+        \leftrightarrow
+        \textstyle{\bigvee_{r\in P, \head{r} = a}}\; \BF{\body{r}}
+        \)
+      \end{itemize}
+    \smallskip
+    \item an atom must be $\mathit{false}$
+      \par\smallskip
+      if the bodies of all rules having it as head are $\mathit{false}$
+      \smallskip
+      \begin{itemize}\normalsize
+      \item<only@3->
+        \(
+        \alt<4>{\neg a}{\phantom{\neg}a}
+        \leftrightarrow
+        \textstyle{\alt<4>{\bigwedge}{\bigvee}_{r\in P, \head{r} = a}}\alt<4>{\neg}{\;} \BF{\body{r}}
+        \)
+      \end{itemize}
     \end{itemize}
   \end{itemize}
   \nocite{fitting02a}
