@@ -36,6 +36,36 @@
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{Definition}
+  \bigskip
+  Let $P$ be a normal logic program
+  \medskip
+  \begin{itemize}
+  \item Define
+    \[
+      {\mathbf{\Omega}}_P\langle T,F \rangle
+      =
+      \langle
+      {\mathbf{T}}_P\langle T,F \rangle,
+      {\mathbf{U}}_P\langle T,F \rangle
+      \rangle
+    \]
+  \item []
+    where
+    \begin{align*}
+      {\mathbf{T}}_P\langle T,F \rangle
+      & =
+      \{\, \head{r} \mid r \in P, \pbody{r} \subseteq T, \nbody{r} \subseteq F \,\}
+      \\
+      {\mathbf{U}}_P\langle T,F \rangle
+      & =
+      \atom{P} \setminus
+      \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}
+    \end{align*}
+\item We refer to ${\mathbf{\Omega}}_P$ as the \alert{well-founded operator} of program $P$
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
 \begin{frame}{Example}
   \bigskip
   \begin{itemize}
