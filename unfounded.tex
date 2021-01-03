@@ -62,30 +62,31 @@
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Example}
-\[
-P
-=
-\left\{
-  \begin{array}{lcl}
-    a &\leftarrow & b \\
-    b &\leftarrow & a
-  \end{array}
-\right\}
-\]
-\medskip
-\begin{itemize}
-\item<2-> $\emptyset$ is an unfounded set (by definition)
-\smallskip
-\item<3-> $\{a\}$ is not an unfounded set of $P$ wrt $\langle\emptyset,\emptyset\rangle$
-\item<4-> $\{a\}$ is     an unfounded set of $P$ wrt $\langle\emptyset,\{b\}\rangle$
-\item<5-> $\{a\}$ is not an unfounded set of $P$ wrt $\langle\{b\},\emptyset\rangle$
-\smallskip
-\item<6>[]\itarrow\ analogously for $\{b\}$
-\smallskip
-\item<7-> $\{a,b\}$ is     an unfounded set of $P$ wrt $\langle\emptyset,\emptyset\rangle$
-\item<8-> $\{a,b\}$ is     an unfounded set of $P$ wrt any partial interpretation
-\end{itemize}
-
+  \bigskip
+  \begin{itemize}
+  \item<1->
+    \(
+    P
+    =
+    \left\{
+      \begin{array}{lcl}
+        a &\leftarrow & b \\
+        b &\leftarrow & a
+      \end{array}
+    \right\}
+    \)
+    \bigskip
+  \item<2-> $\emptyset$ is an unfounded set (by definition)
+    \smallskip
+  \item<3-> $\{a\}$ is not an unfounded set of $P$ wrt $\langle\emptyset,\emptyset\rangle$
+  \item<4-> $\{a\}$ is     an unfounded set of $P$ wrt $\langle\emptyset,\{b\}\rangle$
+  \item<5-> $\{a\}$ is not an unfounded set of $P$ wrt $\langle\{b\},\emptyset\rangle$
+    \smallskip
+  \item<6>[]\itarrow\ analogously for $\{b\}$
+    \smallskip
+  \item<7-> $\{a,b\}$ is     an unfounded set of $P$ wrt $\langle\emptyset,\emptyset\rangle$
+  \item<8-> $\{a,b\}$ is     an unfounded set of $P$ wrt any partial interpretation
+  \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Logic programs}
