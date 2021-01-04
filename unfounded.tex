@@ -132,11 +132,12 @@
       \atom{P} \setminus
       \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}
     \]
-  \item<2-> \structure{Note} \ The set
+  \item<2-> \structure{Note} \
     \begin{eqnarray*}
-      & & \Cn{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\\
-      &=& \Cn{\{\head{r}\leftarrow\pbody{r} \mid r\in P, \pbody{r} \cap F = \emptyset, \nbody{r}\cap T=\emptyset\}}
+      & & \only<3->{\Cn}{\reduct{\{r \in P \mid \pbody{r} \cap F = \emptyset\}}{T}}\\
+      &=& \only<3->{\Cn}{\{\head{r}\leftarrow\pbody{r} \mid r\in P, \pbody{r} \cap F = \emptyset, \nbody{r}\cap T=\emptyset\}}
     \end{eqnarray*}
+    \pause[3]
     contains all non-circularly derivable atoms from $P$ wrt $\langle T,F \rangle$
   \end{itemize}
 \end{frame}
