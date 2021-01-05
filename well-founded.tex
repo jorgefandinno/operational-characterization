@@ -7,31 +7,31 @@
   \item<2-> \structure{Observation} \
     Condition 1 (in the definition of an unfounded set)
     corresponds to  ${\mathbf{F}}_P\langle T,F \rangle$
-    of ${\mathbf{\Phi}}_P\langle T,F \rangle$
+    of $\Phi_P\langle T,F \rangle$
     \medskip
   \item<3-> \structure{Idea} \
-    Extend Fitting's operator $\mathbf{\Phi}_P$
+    Extend Fitting's operator $\Phi_P$
   \item<4-> []
     \begin{itemize}\normalsize
-    \item keep    ${\mathbf{T}}_P\langle T,F \rangle$ from ${\mathbf{\Phi}}_P\langle T,F \rangle$ and
-    \item replace ${\mathbf{F}}_P\langle T,F \rangle$ from ${\mathbf{\Phi}}_P\langle T,F \rangle$ by
+    \item keep    ${\mathbf{T}}_P\langle T,F \rangle$ from $\Phi_P\langle T,F \rangle$ and
+    \item replace ${\mathbf{F}}_P\langle T,F \rangle$ from $\Phi_P\langle T,F \rangle$ by
       ${\mathbf{U}}_P\langle T,F \rangle$
     \end{itemize}
     \medskip
   \item<only@5 > \structure{Note} \ An atom is $\mathit{false}$ if it belongs to the greatest unfounded set
   \item<only@7-> \structure{Definition} \
     \(
-    {\mathbf{\Omega}}_P\langle T,F \rangle
+    \Omega_P\langle T,F \rangle
     =
     \langle {\mathbf{T}}_P\langle T,F \rangle, {\mathbf{U}}_P\langle T,F \rangle\rangle
     \)
-  \item<only@8->[] We refer to ${\mathbf{\Omega}}_P$ as the \alert{well-founded operator} of program $P$
+  \item<only@8->[] We refer to $\Omega_P$ as the \alert{well-founded operator} of program $P$
     \smallskip
   \item<only@9-> \structure{Property} \
     \(
-    {\mathbf{\Phi}}_P  \langle T,F \rangle
+    \Phi_P  \langle T,F \rangle
     \sqsubseteq
-    {\mathbf{\Omega}}_P\langle T,F \rangle
+    \Omega_P\langle T,F \rangle
     \)
   \end{itemize}
 \end{frame}
@@ -43,7 +43,7 @@
   \begin{itemize}
   \item Define
     \[
-      {\mathbf{\Omega}}_P\langle T,F \rangle
+      \Omega_P\langle T,F \rangle
       =
       \langle
       {\mathbf{T}}_P\langle T,F \rangle,
@@ -62,7 +62,7 @@
       \atom{P} \setminus
       \Cn{\reduct{\{\,r \in P \mid \pbody{r} \cap F = \emptyset\,\}}{T}}
     \end{align*}
-\item We refer to ${\mathbf{\Omega}}_P$ as the \alert{well-founded operator} of program $P$
+\item We refer to $\Omega_P$ as the \alert{well-founded operator} of program $P$
 \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
@@ -86,17 +86,17 @@
     \right\}
     \)
     \bigskip
-  \item<2-> Let's iterate ${\mathbf{\Omega}}_P$ on $\langle \{c\}, \emptyset\rangle$
+  \item<2-> Let's iterate $\Omega_P$ on $\langle \{c\}, \emptyset\rangle$
   \item<3-> []
     \[
     \begin{array}{rcl}
-      {\mathbf{\Omega}}_{P}\langle\{  c\},\emptyset  \rangle &=&\langle\{a  \},\{d,    f\}\rangle
+      \Omega_P\langle\{  c\},\emptyset  \rangle &=&\langle\{a  \},\{d,    f\}\rangle
       \\\pause[4]
-      {\mathbf{\Omega}}_{P}\langle\{a  \},\{  d,  f\}\rangle &=&\langle\{a,c\},\{b,  e,f\}\rangle
+      \Omega_P\langle\{a  \},\{  d,  f\}\rangle &=&\langle\{a,c\},\{b,  e,f\}\rangle
       \\\pause[5]
-      {\mathbf{\Omega}}_{P}\langle\{a,c\},\{b,  e,f\}\rangle &=&\langle\{a  \},\{b,d,e,f\}\rangle
+      \Omega_P\langle\{a,c\},\{b,  e,f\}\rangle &=&\langle\{a  \},\{b,d,e,f\}\rangle
       \\\pause[6]
-      {\mathbf{\Omega}}_{P}\langle\{a  \},\{b,d,e,f\}\rangle &=&\langle\{a,c\},\{b,  e,f\}\rangle
+      \Omega_P\langle\{a  \},\{b,d,e,f\}\rangle &=&\langle\{a,c\},\{b,  e,f\}\rangle
       \\
       & \vdots &
     \end{array}
@@ -107,17 +107,17 @@
 \begin{frame}{Well-founded semantics}
   \bigskip
   \begin{itemize}
-  \item<1-> Define the iterative variant of ${\mathbf{\Omega}}_P$ for $i\geq 0$ as
+  \item<1-> Define the iterative variant of $\Omega_P$ for $i\geq 0$ as
     \[
-    {\mathbf{\Omega}}_P^0\langle T, F \rangle = \langle T, F \rangle
+    \Omega_P^0\langle T, F \rangle = \langle T, F \rangle
     \qquad\qquad
-    {\mathbf{\Omega}}_P^{i+1}\langle T, F \rangle =
-    {\mathbf{\Omega}}_P{\mathbf{\Omega}}_P^i\langle T, F \rangle
+    \Omega_P^{i+1}\langle T, F \rangle =
+    \Omega_P\Omega_P^i\langle T, F \rangle
     \]
   \item<2-> Define the \alert{well-founded semantics} of a normal logic program $P$\\
     as the partial interpretation
     \[
-    \textstyle{\bigsqcup_{i \geq 0}} {\mathbf{\Omega}}_P^i \langle \emptyset, \emptyset \rangle
+    \textstyle{\bigsqcup_{i \geq 0}} \Omega_P^i \langle \emptyset, \emptyset \rangle
     \]
   \end{itemize}
   \nocite{gerosc91a}
@@ -146,15 +146,15 @@
   \item<2-> Computing the well-founded semantics of $P$
     \[
     \begin{array}{rclcl}
-      \mathbf{\Omega}^0\langle\emptyset,\emptyset\rangle&=&                                                & &\langle\emptyset,\emptyset\rangle
+      \Omega_P^0\langle\emptyset,\emptyset\rangle&=&                                                & &\langle\emptyset,\emptyset\rangle
       \\
-      \mathbf{\Omega}^1\langle\emptyset,\emptyset\rangle&=&\mathbf{\Omega}\langle\emptyset,\emptyset\rangle&=&\langle\{a\}    ,\{f\}    \rangle
+      \Omega_P^1\langle\emptyset,\emptyset\rangle&=&\Omega_P\langle\emptyset,\emptyset\rangle&=&\langle\{a\}    ,\{f\}    \rangle
       \\
-      \mathbf{\Omega}^2\langle\emptyset,\emptyset\rangle&=&\mathbf{\Omega}\langle\{a\}    ,\{f\}    \rangle&=&\langle\{a\}    ,\{b,e,f\}\rangle
+      \Omega_P^2\langle\emptyset,\emptyset\rangle&=&\Omega_P\langle\{a\}    ,\{f\}    \rangle&=&\langle\{a\}    ,\{b,e,f\}\rangle
       \\
-      \mathbf{\Omega}^3\langle\emptyset,\emptyset\rangle&=&\mathbf{\Omega}\langle\{a\}    ,\{b,e,f\}\rangle&=&\langle\{a\}    ,\{b,e,f\}\rangle
+      \Omega_P^3\langle\emptyset,\emptyset\rangle&=&\Omega_P\langle\{a\}    ,\{b,e,f\}\rangle&=&\langle\{a\}    ,\{b,e,f\}\rangle
       \\[10pt]\pause[3]
-      \bigsqcup_{i \geq 0}\mathbf{\Omega}^i\langle\emptyset,\emptyset\rangle&=&\langle\{a\},\{b,e,f\}\rangle
+      \bigsqcup_{i \geq 0}\Omega_P^i\langle\emptyset,\emptyset\rangle&=&\langle\{a\},\{b,e,f\}\rangle
     \end{array}
     \]
   \end{itemize}
@@ -165,14 +165,14 @@
   Let $P$ be a normal logic program
   \medskip
   \begin{itemize}
-  \item ${\mathbf{\Omega}}_P^i\langle \emptyset, \emptyset \rangle$ is monotonic
+  \item $\Omega_P^i\langle \emptyset, \emptyset \rangle$ is monotonic
     \smallskip
 
     That is,
     \(
-    {\mathbf{\Omega}}_P^i\langle \emptyset, \emptyset \rangle
+    \Omega_P^i\langle \emptyset, \emptyset \rangle
     \sqsubseteq
-    {\mathbf{\Omega}}_P^{i+1}\langle \emptyset, \emptyset \rangle
+    \Omega_P^{i+1}\langle \emptyset, \emptyset \rangle
     \)
     \medskip
   \item The well-founded semantics of $P$ is
@@ -184,9 +184,9 @@
   \item We have \
     \(
     \bigsqcup_{i \geq 0}
-    {\mathbf{\Phi}}_P^i \langle \emptyset, \emptyset \rangle
+    \Phi_P^i \langle \emptyset, \emptyset \rangle
     \sqsubseteq
-    \bigsqcup_{i \geq 0} {\mathbf{\Omega}}_P^i \langle
+    \bigsqcup_{i \geq 0} \Omega_P^i \langle
     \emptyset, \emptyset \rangle
     \)
   \end{itemize}
@@ -201,12 +201,12 @@
   \item<1-> \structure{Monotonicity} \
     $\langle T,F \rangle\sqsubseteq\langle T',F' \rangle$
     implies
-    ${\mathbf{\Omega}}_P\langle T,F \rangle\sqsubseteq{\mathbf{\Omega}}_P\langle T',F' \rangle$
+    $\Omega_P\langle T,F \rangle\sqsubseteq\Omega_P\langle T',F' \rangle$
     \smallskip
   \item<1->
     $\langle T,F \rangle$ is a \alert{well-founded fixpoint} of $P$,
     if
-    ${\mathbf{\Omega}}_P\langle T,F \rangle = \langle T,F \rangle$
+    $\Omega_P\langle T,F \rangle = \langle T,F \rangle$
   \medskip
   \item<2-> []
     \begin{itemize}\normalsize
@@ -253,25 +253,25 @@
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Properties}
-  Let ${\mathbf{\Omega}}_P\langle T,F \rangle=\langle T',F'\rangle$
+  Let $\Omega_P\langle T,F \rangle=\langle T',F'\rangle$
   for\\
   a normal logic program $P$ and
   a partial interpretation $\langle T,F \rangle$
   \smallskip
   \begin{itemize}
-  \item<2-> ${\mathbf{\Omega}}_P$ is \alert{stable model preserving}
+  \item<2-> $\Omega_P$ is \alert{stable model preserving}
   \item<2-> [] If $X$ is a stable model of $P$ such that $T\subseteq X$ and $X\cap F=\emptyset$,
     \\ then $T'\subseteq X$ and $X\cap F'=\emptyset$
     \smallskip
-  \item<3-> \structure{Note} \ ${\mathbf{\Omega}}_P$ can be used for approximating stable models
+  \item<3-> \structure{Note} \ $\Omega_P$ can be used for approximating stable models
     \\ and so for propagation in ASP solvers
     \smallskip
-  \item <4-> [] % In contrast to ${\mathbf{\Phi}}_P$,
-    Operator ${\mathbf{\Omega}}_P$ is sufficient for propagation
+  \item <4-> [] % In contrast to $\Phi_P$,
+    Operator $\Omega_P$ is sufficient for propagation
     because total fixpoints correspond to stable models
     \medskip
   \item<5-> \structure{Note} \
-    Most ASP solvers apply --- in addition to ${\mathbf{\Omega}}_P$ --- \alert{backward propagation},
+    Most ASP solvers apply --- in addition to $\Omega_P$ --- \alert{backward propagation},
     originating from program completion
     \\
     (although unnecessary from a formal point of view)
@@ -285,15 +285,15 @@
   \begin{itemize}
   \item <2-> Define
     \[
-      {\mathbf{\Omega}}_P(L,U)
+      \Omega_P(L,U)
       =
       (\Cn{\reduct{P}{U}},\Cn{\reduct{P}{L}})
     \]
   \item <3-> \structure{Properties}
     \begin{itemize}\normalsize
-    \item The least fixpoint  of ${\mathbf{\Omega}}_P$ corresponds to the well-founded semantics of $P$
+    \item The least fixpoint  of $\Omega_P$ corresponds to the well-founded semantics of $P$
       \smallskip
-    \item Total fixpoints of ${\mathbf{\Omega}}_P$ correspond  to the stable models of $P$
+    \item Total fixpoints of $\Omega_P$ correspond  to the stable models of $P$
     \end{itemize}
   \end{itemize}
   \nocite{truszczynski18a}
