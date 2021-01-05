@@ -1,0 +1,62 @@
+% ----------------------------------------------------------------------
+\begin{frame}{Example}
+  \bigskip
+  \begin{itemize}
+  \item
+    \(
+    P
+    =
+    \left\{
+      \begin{array}{lll}
+        a \leftarrow                \quad &
+        c \leftarrow a, \neg d      \quad &
+        e \leftarrow b, \neg f
+        \\
+        b \leftarrow \neg a         \quad &
+        d \leftarrow \neg c, \neg e \quad &
+        e \leftarrow e
+      \end{array}
+    \right\}
+    \)
+    \bigskip
+    \bigskip
+  \item \structure{Spotlight} \quad
+    \(
+    {\mathbf{\Omega}}_{P}\langle\{c\},\emptyset \rangle=\langle\{a\},\{d,f\}\rangle
+    \)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Example}
+  \bigskip
+  \begin{itemize}
+  \item<1->
+    \(
+    P
+    =
+    \left\{
+      \begin{array}{lll}
+        a \leftarrow                \quad &
+        c \leftarrow a, \neg d      \quad &
+        e \leftarrow b, \neg f
+        \\
+        b \leftarrow \neg a         \quad &
+        d \leftarrow \neg c, \neg e \quad &
+        e \leftarrow e
+      \end{array}
+    \right\}
+    \)
+    \bigskip
+    \bigskip
+  \item \structure{Spotlight} \quad
+    \(
+    {\mathbf{\Omega}}_{P}\langle\{a\},\{d,f\}\rangle=\langle\{a,c\},\{b,e,f\}\rangle
+    \)
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
